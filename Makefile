@@ -1,5 +1,4 @@
 SRCS =	ft_printf.c		\
-		ft_printmem.c	\
 		hexaform.c		\
 		utils.c 		\
 		utils2.c		\
