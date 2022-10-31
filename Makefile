@@ -8,8 +8,6 @@ NAME = libftprintf.a
 
 OBJS = $(SRCS:.c=.o)
 
-OBJSB = $(SRCSB:.c=.o)
-
 CC_FLAGS = -Wall -Wextra -Werror
 
 %.o : %.c ft_printf.h
@@ -21,7 +19,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)

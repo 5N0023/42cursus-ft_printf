@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 20:37:56 by mlektaib          #+#    #+#             */
-/*   Updated: 2022/10/29 20:38:54 by mlektaib         ###   ########.fr       */
+/*   Updated: 2022/11/01 00:28:49 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*ft_itoahelper(int count, char *tab, int i, long num)
 	return (tab);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int n, int *ret)
 {
 	int		count;
 	char	*tab;
@@ -56,7 +56,10 @@ char	*ft_itoa(int n)
 		count++;
 	tab = (char *)malloc(sizeof(char) * count + 1);
 	if (!tab)
+	{
+		*ret = -1;
 		return (0);
+	}
 	if (n < 0)
 	{
 		tab[i] = '-';

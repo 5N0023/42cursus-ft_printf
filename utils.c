@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 20:37:49 by mlektaib          #+#    #+#             */
-/*   Updated: 2022/10/29 20:42:34 by mlektaib         ###   ########.fr       */
+/*   Updated: 2022/11/01 00:28:57 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ size_t	ft_strlen(const char *str)
 
 void	ft_putchar(char c, int *ret)
 {
-	write(1, &c, 1);
+	if (write(1, &c, 1) == -1)
+	{
+		*ret = -1;
+		return ;
+	}
 	*ret += 1;
 }
 
@@ -38,7 +42,7 @@ void	ft_putstr(const char *s, int *ret)
 		return ;
 	}
 	i = 0;
-	while (s[i])
+	while (s[i] && *ret != -1)
 	{
 		ft_putchar(s[i], ret);
 		i++;
@@ -49,14 +53,14 @@ void	ft_putnbr(int n, int *ret)
 {
 	char	*nbr;
 
-	nbr = ft_itoa(n);
+	nbr = ft_itoa(n, ret);
 	ft_putstr(nbr, ret);
 	free(nbr);
 }
 
 void	ft_unsgndnbr(unsigned int num, int *ret)
 {
-	if (num < 10)
+	if (num < 10 && *ret != -1)
 		ft_putchar(num + '0', ret);
 	else
 	{
